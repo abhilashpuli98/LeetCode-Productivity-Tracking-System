@@ -2,7 +2,7 @@
   "name": "LeetCode Performance Tracker",
   "description": "Sync solved LeetCode problems and visualize them in a dashboard",
   "version": "1.0",
-  "author": "Abhilash",
+  "author": "Abhilash Puli",
   "manifest_version": 3,
 
   "action": {
