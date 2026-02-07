@@ -1,0 +1,477 @@
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url(/assets/font-fam/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(/assets/font-fam/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url(/assets/font-fam/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url(/assets/font-fam/Poppins-SemiBold.ttf);
+}
+
+:root {
+  --primary: #FFA116;
+  --contrast-primary: #FFF1DF;
+  --gray: #F4F4F4;
+  --black: #0F0F0F;
+  --background: #FFF;
+  --title: #696969;
+  --error: #F44336;
+}
+
+
+body {
+  width: 350px;
+  background-color: var(--background) !important;
+  text-align: center;
+  transition: background-color 0.75s ease;
+  font-size: 13px;
+
+  font-family: "Poppins-Regular", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+.content-container {
+  padding: 15px;
+}
+
+#authenticate, #authenticated, #hook-git-repo {
+  display:  none;
+}
+
+#contribute-container {
+  background-color: var(--contrast-primary);
+  padding: 10px;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.button-auth-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+#github-icon {
+  background-color: white;  /* contrast bg */
+  padding: 2px;             /* space around logo */
+  border-radius: 8px;       /* optional: slightly rounded */
+  width: 20px;
+  height: 20px;
+}
+
+
+.change-account-button:hover {
+  opacity: .95;
+}
+
+.change-account-button.animation {
+  border-radius: 100%;
+  animation: ripple 0.6s linear infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+  }
+}
+
+button.button-auth {
+  background-color: var(--black);
+  color: white;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 300px;
+  cursor: pointer;
+  font-family: 'Poppins-Regular';
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#repo-name-error {
+  font-family: "Poppins-Regular";
+  font-size: 12px;
+  color: var(--error);
+  padding: 0 16px;
+}
+
+a, a:hover, a:visited {
+  color: var(--primary);
+  font-size: 12px;
+  text-decoration: none !important;
+  font-family: 'Poppins-Medium';
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+div.input-group-text.btn-suffix {
+  cursor: pointer;
+  font-family: 'Poppins-Regular';
+  font-size: 14px;
+  color: white;
+  background-color: var(--black);
+}
+
+
+
+input.form-control:focus {
+  border-color: var(--black);
+  box-shadow: none;
+} 
+
+p {
+  font-size: 14px;
+  text-align: center;
+  color: var(--title);
+  font-family: 'Poppins-Regular';
+}
+
+h2.auth-title {
+  font-family: "Poppins-Bold";
+  font-size: 20px;
+  color: var(--black);
+  margin-top: 20px;
+  text-align: center;
+}
+
+#github-authenticate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#github-mark {
+  width: 25px;
+  margin-right: 5px;
+}
+
+.user-infos {
+  margin-top: 20px;
+}
+
+.user-infos-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.user-infos-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-infos-item-label {
+  font-family: "Poppins-Bold";
+  font-size: 12px;
+  color: var(--black);
+}
+
+.user-infos-item-value {
+  font-family: "Poppins-Regular";
+  font-size: 12px;
+  color: var(--black);
+}
+
+button.primary-button, button.primary-button:visited {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 5px 15px;
+  border-radius: 300px;
+  cursor: pointer;
+  font-family: 'Poppins-Regular';
+  font-size: 12px;
+}
+
+button.primary-button:hover {
+  background-color: var(--primary);
+  color: var(--contrast-primary);
+}
+
+h3.subtitle {
+  font-family: "Poppins-Regular";
+  font-size: 16px;
+  color: var(--title);
+}
+
+h1 {
+  font-family: "Poppins-SemiBold";
+  font-size: 20px !important;
+  margin: 0;
+  padding: 0;
+  color: var(--black);
+  margin-bottom: 0px !important;
+}
+
+h1 span {
+  font-family: "Poppins-Bold";
+  color: var(--primary);
+}
+
+#stats-container {
+  margin-top: 20px;
+  background-color: var(--gray);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+#stats-content {
+  position: relative;
+  overflow: hidden;
+}
+
+/*#loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}*/
+
+.modern-loader {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+        transform: rotateZ(45deg);
+        perspective: 1000px;
+        border-radius: 50%;
+        /*width: 48px;
+        height: 48px;*/
+        color: #4f2dca;
+}
+        .modern-loader:before,
+        .modern-loader:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: inherit;
+          height: inherit;
+          border-radius: 50%;
+          transform: rotateX(70deg);
+          animation: 1s spin linear infinite;
+        }
+        .modern-loader:after {
+          color: #FF3D00;
+          transform: rotateY(70deg);
+          animation-delay: .4s;
+        }
+
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, -50%) rotateZ(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotateZ(360deg);
+        }
+      }
+
+      @keyframes rotateccw {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(-360deg);
+        }
+      }
+
+      @keyframes spin {
+        0%,
+        100% {
+          box-shadow: .2em 0px 0 0px currentcolor;
+        }
+        12% {
+          box-shadow: .2em .2em 0 0 currentcolor;
+        }
+        25% {
+          box-shadow: 0 .2em 0 0px currentcolor;
+        }
+        37% {
+          box-shadow: -.2em .2em 0 0 currentcolor;
+        }
+        50% {
+          box-shadow: -.2em 0 0 0 currentcolor;
+        }
+        62% {
+          box-shadow: -.2em -.2em 0 0 currentcolor;
+        }
+        75% {
+          box-shadow: 0px -.2em 0 0 currentcolor;
+        }
+        87% {
+          box-shadow: .2em -.2em 0 0 currentcolor;
+        }
+      }
+
+.loading .value {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+#stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+#easy, #medium, #hard {
+  text-align: center;
+  font-family: 'Poppins-Bold';
+  font-size: 32px;
+}
+
+.stats-label {
+  font-family: "Poppins-Regular";
+  font-size: 12px;
+  color: var(--black);
+  text-align: center;
+}
+
+#total-problems-solved {
+  font-size: 14px;
+  font-family: "Poppins-Bold";
+  color: #000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#unlink-repository-container {
+  margin-top: 10px;
+}
+
+#unlink-repo {
+  cursor: pointer;
+}
+
+/* Slide toggle button */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;  /* Reduced from 60px */
+  height: 22px; /* Reduced from 34px */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;  /* Reduced from 26px */
+  width: 16px;   /* Reduced from 26px */
+  left: 3px;     /* Reduced from 4px */
+  bottom: 3px;   /* Reduced from 4px */
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--primary);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px); /* Reduced from 26px */
+  -ms-transform: translateX(18px);     /* Reduced from 26px */
+  transform: translateX(18px);         /* Reduced from 26px */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 22px; /* Adjusted to match new height */
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.chat-ui {
+  width: 350px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chat-header {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.chat-window {
+  height: 200px;
+  overflow-y: auto;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.chat-bubble {
+  padding: 6px 10px;
+  border-radius: 10px;
+  margin: 4px 0;
+  max-width: 80%;
+}
+
+.chat-bubble.user {
+  background: #d1e7ff;
+  align-self: flex-end;
+}
+
+.chat-bubble.ai {
+  background: #f1f1f1;
+  align-self: flex-start;
+}
+
+.suggestions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+

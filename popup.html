@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>LeetCode Journey Tracker</title>
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/popup.css"/>
+    </head>
+    <body class="bg-light text-dark">
+        <div class="container py-4">
+        <header class="mb-4 text-center">
+          
+        <h1 class="display-5 fw-bold">LeetCode<span class="text-primary"> Journey </span><span class="text-danger">Tracker!</span></h1>
+        </header>
+        <section id="authenticate" class="card p-4 shadow-sm mb-4">
+            <h2 class="auth-title text-center h4 fw-semibold">Welcome!</h2>
+            <p class="mb-3">
+                Connect GitHub to instantly sync and track your LeetCode progress...
+            </p>
+            <div class="text-center">
+            <button type="button"
+            class="btn btn-dark d-flex align-items-center justify-content-center gap-2 mx-auto" id="github-authenticate-button">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub icon"
+                width="24" height="24" id="github-icon"  />
+                <span>Authenticate</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                </svg>
+            </button>
+            </div>
+        </section>
+        <section id="hook-git-repo" class="card p-4 shadow-sm mb-4">
+            <h2 class="auth-title h4"> 
+             Link GitHub to Sync LeetCode smartly.
+            </h2>
+            <p class="mb-4" > 
+                Create a GitHub Repository and Enter it's name to Sync your Progress.
+            </p>
+            <div class="input-group mb-2">
+                <input type="text" id="repo-name" class="form-control" placeholder="Ex: leetcode-solutions"/>
+                <button type="button" class="btn btn-primary"  id="hook-button">Link
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                </svg>
+            </button>
+            </div>
+
+            <div id="repo-name-error" class="text-danger small fst-italic"></div>
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-dark shadow-sm" id="change-account-button"> Change GitHub account</button>
+            </div>
+        </section>
+
+        <section id="authenticated" class="card p-4 shadow-sm mb-4">
+            <div id="stats-container" class="mb-3">
+                <div id="stats-content">
+                    <div id="loading-container" class="d-flex justify-content-center mb-3">
+                        <div class="modern-loader d-flex gap-2">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <div id="stats" class="d-flex justify-content-around text-center bg-light border p-2">
+                        <div>
+                            <div class="stats-label fw-semibold text-success">Easy</div>
+                            <div id="easy" class="value">-</div>
+                        </div>
+                        <div>
+                            <div class="stats-label fw-semibold text-warning">Medium</div>
+                            <div id="medium" class="value">-</div>
+                        </div>
+                        <div>
+                            <div class="stats-label fw-semibold text-danger">Hard</div>
+                            <div id="hard" class="value">-</div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+            
+            <div class="text-center mt-3">
+               <a href="https://github.com" target="_blank" id="repository-link" class="btn btn-outline-primary d-inline-flex align-items-center gap-2" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5"/>
+                    <path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0z"/>
+                </svg>
+                <span>Show your Repository</span>
+               </a>
+                </div>
+
+        <div class="user-infos">
+          <h3 class="subtitle h5 mb-3 fw-bold" style="font-family:Georgia, 'Times New Roman', Times, serif;">Settings</h3>
+          <div class="user-infos-content">
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input fw-semibold" type="checkbox" id="submit-code-checkbox" checked />
+              <label class="form-check-label fw-semibold" for="submit-code-checkbox">Submit only new solutions</label>
+            </div>
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" type="checkbox" id="multiple-submission-checkbox" checked />
+              <label class="form-check-label fw-semibold" for="multiple-submission-checkbox">Sync multiple submissions for the same problem</label>
+            </div>
+
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" type="checkbox" id="comment-submission-checkbox" checked />
+              <label class="form-check-label fw-semibold" for="comment-submission-checkbox">Add comments to your submissions</label>
+            </div>
+            
+            
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="fw-semibold">Sync previously solved problems</div>
+              <button type="button" class="btn btn-success d-flex align-items-center gap-1" id="sync-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+                        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                </svg>
+                <span>Sync</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div>
+                <div class="fw-semibold">Repository</div>
+                <div id="repository-name" class="text-muted">repo name</div>
+              </div>
+              <button type="button" class="btn btn-danger" id="unlink-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-left-square" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm10.096 8.803a.5.5 0 1 0 .707-.707L6.707 6h2.768a.5.5 0 1 0 0-1H5.5a.5.5 0 0 0-.5.5v3.975a.5.5 0 0 0 1 0V6.707z"/>
+                </svg>
+                Unlink</button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="fw-semibold">Username</div>
+                <div id="github-username" class="text-muted">username</div>
+              </div>
+              
+              <button type="button" class="btn btn-secondary" id="logout-button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                </svg>
+                Logout
+            </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sync-status-container" class="text-center small text-muted mb-3">
+        <div id="sync-status"></div>
+        <div id="sync-time"></div>
+      </section>
+      <footer id="contribute-container" class="text-center">
+        <a href="https://github.com/abhilashpuli99/leetcode-journey-tracker" class="link d-inline-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+          />
+          </svg>
+          
+          <span class="text-primary">Contribute to this Project on GitHub</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+        </svg>
+        </a>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

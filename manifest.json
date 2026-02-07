@@ -1,0 +1,47 @@
+{
+  "name": "LeetCode Performance Tracker",
+  "description": "Sync solved LeetCode problems and visualize them in a dashboard",
+  "version": "1.0",
+  "author": "Abhilash",
+  "manifest_version": 3,
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "icons": {
+    "16": "assets/logo-leetcode-tracker/Leetcode-tracker-500.png",
+    "48": "assets/logo-leetcode-tracker/Leetcode-tracker-500.png",
+    "128": "assets/logo-leetcode-tracker/Leetcode-tracker-500.png"
+  },
+
+  "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+
+  "permissions": ["storage", "tabs", "unlimitedStorage"],
+
+  "host_permissions": ["https://localhost:3000/*","https://github.com/*", "https://leetcode.com/*","https://api.github.com/*"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/*", "https://github.com/*"],
+      "js": ["scripts/authorize.js", "scripts/loader.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/leetcode.js",
+        "scripts/models/*",
+        "scripts/utils/*",
+        "scripts/services/*",
+        "scripts/constants/*"
+      ],
+      "matches": ["https://github.com/*", "https://leetcode.com/*"]
+    }
+  ]
+}
