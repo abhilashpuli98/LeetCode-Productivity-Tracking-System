@@ -161,10 +161,6 @@ Please ensure all contributions follow clean coding practices and include approp
 
 ## Connect
 
----
-
-## Connect
-
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Professional-blue?logo=linkedin)](https://www.linkedin.com/in/abhilash-puli)
 [![Medium](https://img.shields.io/badge/Medium-Writing-black?logo=medium)](https://medium.com/@abhilashpuli)
 [![Kaggle](https://img.shields.io/badge/Kaggle-Data%20Science-20BEFF?logo=kaggle)](https://www.kaggle.com/sherlock9)
